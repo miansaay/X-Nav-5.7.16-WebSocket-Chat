@@ -14,9 +14,9 @@
 		<input type="text" id="message">
 		<button type="submit">Send</button>
 	</form>
-	
-	<hr>
-	
+
+ <hr>
+ 
 	<div id="output"></div>
 	
 	<script>
@@ -43,7 +43,7 @@
 			s.onmessage = function (e) {
 				console.log("Socket message:", e.data);
 				var p = document.createElement("p");
-				p.innerHTML = e.data;
+				p.innerHTML = "Recibido: " + e.data;
 				output.appendChild(p);
 			};
 			
@@ -57,9 +57,13 @@
  
 		form.addEventListener("submit", function (e) {
 			e.preventDefault();
+   var p = document.createElement("p");
+			p.innerHTML = "Enviado: " + inputBox.value;
+			output.appendChild(p);
 			s.send(inputBox.value);
 			inputBox.value = "";
 		}, false)
+
  
 	</script>
  
